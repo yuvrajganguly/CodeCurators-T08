@@ -47,17 +47,17 @@ def _ensure_models() -> None:
         from huggingface_hub import hf_hub_download
         for filename in _MODEL_FILES:
             if not os.path.exists(filename):
-                logger.info("Downloading %s from HuggingFace Hub ...", filename)
+                print(f"[startup] Downloading {filename} from HuggingFace Hub ...")
                 hf_hub_download(
                     repo_id=_HF_REPO,
                     filename=filename,
                     local_dir=".",
                 )
-                logger.info("Downloaded %s", filename)
+                print(f"[startup] Downloaded {filename}")
             else:
-                logger.info("Model file already present: %s", filename)
+                print(f"[startup] Model already present: {filename}")
     except Exception as e:
-        logger.warning("HuggingFace model download failed: %s (models must be present locally)", e)
+        print(f"[startup] HuggingFace model download failed: {e} (models must be present locally)")
 
 _ensure_models()
 
