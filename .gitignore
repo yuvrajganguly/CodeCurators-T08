@@ -1,5 +1,12 @@
+# Environment & secrets
+.env
 
-# Large model/data files
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Large model / data files
 *.pkl
 *.joblib
 *.db
@@ -7,16 +14,23 @@
 *.h5
 *.parquet
 
-# Large model/data files
-*.pkl
-*.joblib
-*.db
-*.csv
-*.h5
+# Scratch / throwaway scripts — do not re-add
+test.py
+test_2.py
+test_3.py
+test_4.py
+test_reg.py
+test_reg_2.py
+test_reg_3.py
+test_reg_4.py
+trial.py
+yup.py
+debug.py
+joblibtest2.py
+jobliptest.py
+inspect_model.py
+open_meteo.py
 
-# Large model/data files - do not commit
-*.pkl
-*.joblib
-*.db
-*.h5
-*.parquet
+# Node / frontend build artifacts
+node_modules/
+dist/

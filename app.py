@@ -29,7 +29,7 @@ load_dotenv()
 
 SECRET_KEY    = os.environ.get("SECRET_KEY", "fallback-dev-key-change-in-production")
 GMAIL_USER    = os.environ.get("GMAIL_USER", "wildfirepredictor@gmail.com")
-GMAIL_PASS    = os.environ.get("GMAIL_APP_PASSWORD", "dtjuzvzhsaqcfwey")  # placeholder
+GMAIL_PASS    = os.environ.get("GMAIL_APP_PASSWORD")   # set in .env — never hardcode
 DB_PATH       = os.environ.get("DB_PATH", "users.db")
 
 # ===========================================================
