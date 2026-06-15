@@ -2,6 +2,9 @@
 
 An AI-powered web application for real-time wildfire risk prediction, 24-hour forecasting, and email alerting — built with Flask, scikit-learn, XGBoost, and MapLibre GL.
 
+**Live demo:** https://codecurators-t08.onrender.com  
+_(Free tier — may take 30–60 seconds to wake up. Demo OTP: `123456`)_
+
 ---
 
 ## Features
