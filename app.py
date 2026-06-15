@@ -33,6 +33,35 @@ GMAIL_PASS    = os.environ.get("GMAIL_APP_PASSWORD")   # set in .env — never h
 DB_PATH       = os.environ.get("DB_PATH", "users.db")
 
 # ===========================================================
+#  Model Download — fetch from HuggingFace Hub if not local
+# ===========================================================
+_HF_REPO = "yuvrajganguly/wildfire-models"
+_MODEL_FILES = [
+    "voting_ensemble_fire.joblib",
+    "fire_regression_model_2.pkl",
+]
+
+def _ensure_models() -> None:
+    """Download model files from HuggingFace Hub when running in production."""
+    try:
+        from huggingface_hub import hf_hub_download
+        for filename in _MODEL_FILES:
+            if not os.path.exists(filename):
+                logger.info("Downloading %s from HuggingFace Hub ...", filename)
+                hf_hub_download(
+                    repo_id=_HF_REPO,
+                    filename=filename,
+                    local_dir=".",
+                )
+                logger.info("Downloaded %s", filename)
+            else:
+                logger.info("Model file already present: %s", filename)
+    except Exception as e:
+        logger.warning("HuggingFace model download failed: %s (models must be present locally)", e)
+
+_ensure_models()
+
+# ===========================================================
 #  Logging Setup
 # ===========================================================
 logging.basicConfig(

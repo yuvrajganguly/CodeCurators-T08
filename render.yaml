@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: wildfire-predictor
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: GMAIL_USER
+        value: wildfirepredictor@gmail.com
+      - key: GMAIL_APP_PASSWORD
+        sync: false        # set manually in Render dashboard
+      - key: DB_PATH
+        value: /tmp/users.db
+      - key: FLASK_DEBUG
+        value: false
